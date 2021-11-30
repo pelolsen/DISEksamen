@@ -1,16 +1,21 @@
+//LOCALSTORAGE DB:
 if (typeof localStorage === "undefined" || localStorage === null) {
     var LocalStorage = require('node-localstorage').LocalStorage;
     localStorage = LocalStorage('./database');
 }
-
-const bodyParser = require('body-parser');
+//Requirering Modules
 const express = require('express');
-const router = express.Router();
+const bodyParser = require('body-parser');
+//Requerering Database Functions
 const dbcmd = require('../models/DBcommands')
+//Defining the Router
+const router = express.Router();
 
 router.use(express.urlencoded({extended: false}))
 router.use(bodyParser.json())
 
+//GET REQUESTS:
+//all reservations:
 router.get("/", (req, res)=>{
     try{
         const reservationdb = JSON.parse(localStorage.getItem('reservations'))
@@ -19,7 +24,7 @@ router.get("/", (req, res)=>{
         res.send("Something went wrong")
     }
 })
-
+//single reservation based on its reservation ID:
 router.get("/:id", (req, res) => {
     try{
         const reservationdb = JSON.parse(localStorage.getItem('reservations'))
@@ -33,10 +38,11 @@ router.get("/:id", (req, res) => {
     }
 })
 
+//POST REQUEST:
+//add a reservation:
 router.post("/", (req,res) => {
     const reservationdb = JSON.parse(localStorage.getItem('reservations'))
     try{
-        //encrypt the Uses password, so "we" cant see it
         const reservation ={
             reservationID: req.body.reservationID,
             clientID: req.body.clientID,
@@ -46,8 +52,6 @@ router.post("/", (req,res) => {
             balance: req.body.balance
         }
         reservationdb.push(reservation)
-   
-        //if all the above is right, than redirect the user to login page
         res.json('Travel Registered')
         
     }catch{
@@ -56,6 +60,8 @@ router.post("/", (req,res) => {
     localStorage.setItem('reservations',JSON.stringify(reservationdb));
 })
 
+//PUT REQUEST:
+//Change a reservations based on its reservation ID, the code is written so you can't change the reservation ID or the Client ID:
 router.put("/:id", (req,res) =>{
     const reservationdb = JSON.parse(localStorage.getItem('reservations'))
     const id = req.params.id
@@ -73,17 +79,16 @@ router.put("/:id", (req,res) =>{
     const reservationafter = UpdateReservation(id, reservationdb)
     localStorage.setItem('reservations', JSON.stringify(reservationafter))
     res.json("Reservation Update")
-    
 })
 
-
+//DELETE REQUEST:
+//Delete a reservation based on it's reservation ID:
 router.delete('/:id', (req, res) =>{
     const reservationdb = JSON.parse(localStorage.getItem('reservations'))
     const id = req.params.id
     const reservationafter = dbcmd.deleteReservation(id, reservationdb)
     localStorage.setItem('reservations', JSON.stringify(reservationafter))
     res.json('Reservation Deleted') 
-
 })
 
 

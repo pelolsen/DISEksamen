@@ -1,18 +1,21 @@
+//LOCALSTORAGE DB:
 if (typeof localStorage === "undefined" || localStorage === null) {
     var LocalStorage = require('node-localstorage').LocalStorage;
     localStorage = LocalStorage('./database');
 }
-
+//Requirering Modules
 const bodyParser = require('body-parser');
 const express = require('express');
-const router = express.Router();
+//Requerering Database Functions
 const dbcmd = require('../models/DBcommands')
-
-const clients = []
+//Defining Router
+const router = express.Router();
 
 router.use(express.urlencoded({extended: false}))
 router.use(bodyParser.json())
 
+//GET REQUESTS:
+//all clients:
 router.get("/", (req, res)=>{
     try{
         const clientdb = JSON.parse(localStorage.getItem('clients'))
@@ -21,7 +24,7 @@ router.get("/", (req, res)=>{
         res.send("Something went wrong")
     }
 })
-
+//single client based on its client ID:
 router.get("/:id", (req, res) => {
     try{
         const clientdb = JSON.parse(localStorage.getItem('clients'))
@@ -35,10 +38,11 @@ router.get("/:id", (req, res) => {
     }
 })
 
+//POST REQUEST:
+//add a client:
 router.post("/", (req,res) => {
     const clientdb = JSON.parse(localStorage.getItem('clients'))
     try{
-        //encrypt the Uses password, so "we" cant see it
         const client ={
             clientID: req.body.clientID,
             firstName: req.body.firstName,
@@ -47,16 +51,15 @@ router.post("/", (req,res) => {
             City: req.body.City,
         }
         clientdb.push(client)
-   
-        //if all the above is right, than redirect the user to login page
         res.json('Client Registered')
-        
     }catch{
 
     }
     localStorage.setItem('clients',JSON.stringify(clientdb));
 })
 
+//PUT REQUEST:
+//Change a client based on its client ID, the code is written so you can't change the Client ID:
 router.put("/:id", (req,res) =>{
     const id = req.params.id
     const clientdb = JSON.parse(localStorage.getItem('clients'))
@@ -76,8 +79,8 @@ router.put("/:id", (req,res) =>{
     res.json("client Update")
 })
 
-
-
+//DELETE REQUEST:
+//delete a client based on its client ID:
 router.delete('/:id', (req, res) =>{
     const id = req.params.id
     const clientdb = JSON.parse(localStorage.getItem('clients'))
