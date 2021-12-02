@@ -11,3 +11,5 @@ const clear = []
 localStorage.setItem('reservations',JSON.stringify(clear));
 //CLIENTS DB:
 localStorage.setItem('clients',JSON.stringify(clear));
+
+console.log("Database reset complete");

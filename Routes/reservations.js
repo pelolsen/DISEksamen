@@ -30,7 +30,7 @@ router.get("/:id", (req, res) => {
         const reservationdb = JSON.parse(localStorage.getItem('reservations'))
         const reservationid = req.params.id
         const reservation = dbcmd.findsinglereservations(reservationdb, reservationid)
-        console.log(reservation);
+        //console.log(reservation);
         res.send(reservation)
 
     }catch{
