@@ -13,7 +13,7 @@ const seaPort = seaport.connect('localhost', 9090);
 //PROXYSERVER:
 var proxy = httpProxy.createProxyServer({});
 
-// Are to be used later
+
 var i = - 1;
 
 //SSL Keys:
