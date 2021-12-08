@@ -33,6 +33,17 @@ function findsingleclients(clients, id){
 }
 module.exports.findsingleclients = findsingleclients;
 
+function checkClientExistance(clients,id){
+    let result = false
+    for(i = 0; i < Object.keys(clients).length; i++){
+        if(id === clients[i].clientID){
+           result = true
+        }
+   }
+   return result
+}
+module.exports.checkClientExistance = checkClientExistance
+
 function deleteClient(id, arr){
     for(i=0; i<Object.keys(arr).length; i++){
         if(id===arr[i].clientID){

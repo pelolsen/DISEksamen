@@ -31,7 +31,11 @@ router.get("/:id", (req, res) => {
         const reservationid = req.params.id
         const reservation = dbcmd.findsinglereservations(reservationdb, reservationid)
         //console.log(reservation);
-        res.send(reservation)
+        if(reservation == ""){
+            res.json("No reservation found with this ID")
+        } else{
+            res.send(reservation)
+        }
 
     }catch{
  
@@ -42,17 +46,24 @@ router.get("/:id", (req, res) => {
 //add a reservation:
 router.post("/", (req,res) => {
     const reservationdb = JSON.parse(localStorage.getItem('reservations'))
+    const clientdb = JSON.parse(localStorage.getItem('clients'))
     try{
-        const reservation ={
-            reservationID: req.body.reservationID,
-            clientID: req.body.clientID,
-            date: req.body.date,
-            hotelName: req.body.hotelName,
-            price: req.body.price,
-            balance: req.body.balance
+        const cID = req.body.clientID
+        const checkforClient = dbcmd.checkClientExistance(clientdb, cID)
+        if(checkforClient == true){
+            const reservation ={
+                reservationID: req.body.reservationID,
+                clientID: cID,
+                date: req.body.date,
+                hotelName: req.body.hotelName,
+                price: req.body.price,
+                balance: req.body.balance
+            }
+            reservationdb.push(reservation)
+            res.json('Travel Registered')
+        } else {
+            res.json('Cannot make a reservation to a client that does not exists, please use an existing client ID')
         }
-        reservationdb.push(reservation)
-        res.json('Travel Registered')
         
     }catch{
 

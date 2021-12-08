@@ -31,10 +31,14 @@ router.get("/:id", (req, res) => {
         const clientid = req.params.id
         const client = dbcmd.findsingleclients(clientdb, clientid)
         //console.log(client);
-        res.send(client)
+        if(client == ""){
+            res.json("No client found with this ID")
+        } else{
+            res.send(client)
+        }
 
     }catch{
- 
+    //Could put error handling in here.    
     }
 })
 
