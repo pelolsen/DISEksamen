@@ -15,12 +15,20 @@ sh runMacOS.sh
 3. This will reset the database, start all servers, the load-balancer as well as the Seaport-server.
 4. This will as well, perform tests with CRUD operations - GET, POST, PUT and DELETE
 5. There are two precoded users in the runMacOS.sh which will be used for the tests. So if you wish to try the application with more users, you will need to use an API Client such as [Insomnia](https://insomnia.rest), [Postman](https://www.postman.com) or curl from your own terminal. Read more about it in the API Client Section.
+6. NOTE - This application will not run on normal browsers as Chrome or Safari because og the self signed SSL key
 
 ### WINDOWS
+1. Make sure you have [GitBash](https://git-scm.com/downloads) installed at your computer.
+2. In the folder of this aplication simply just click on the runWindows.sh. Otherwise, run the following command on your teminal in the folde scr:
+```bash
+npm start
+```
+3. This will open a GitBash terminal where the Shell Script will run.
+3. The Shell Script will reset the database, start all servers, the load-balancer as well as the Seaport-server.
+4. It will as well, perform tests with CRUD operations - GET, POST, PUT and DELETE
+5. There are two precoded users in the runWindows.sh which will be used for the tests. So if you wish to try the application with more users, you will need to use an API Client such as [Insomnia](https://insomnia.rest), [Postman](https://www.postman.com) or curl from your own terminal. Read more about it in the API Client Section.
+6. NOTE - This application will not run on normal browsers as Chrome or Safari because og the self signed SSL key
 
-3. This will reset the database, start all servers, the load-balancer as well as the Seaport-server.
-4. This will as well, perform tests with CRUD operations - GET, POST, PUT and DELETE
-5. There are two precoded users in the runMacOS.sh which will be used for the tests. So if you wish to try the application with more users, you will need to use an API Client such as [Insomnia](https://insomnia.rest), [Postman](https://www.postman.com) or curl from your own terminal. Read more about it in the API Client Section.
 ## Packages in use
 body-parser: "^1.19.0",
 express: "^4.17.1",
