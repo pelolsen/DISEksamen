@@ -91,7 +91,7 @@ echo "[32mPOST[0m Reservation 1:"
 curl -k --silent -w '\n' -X POST -H "Content-Type: application/json" -d '{"reservationID": "100", "clientID": "1", "date": "24122021", "hotelName": "Marriot", "price": "2300", "balance": "2"}' https://localhost:6000/reservations &
 sleep 1
 echo "[32mPOST[0m Reservation 2:"
-curl -k --silent -w '\n' -X POST -H "Content-Type: application/json" -d '{"reservationID": "200", "clientID": "2", "date": "01012022", "hotelName": "Holiday Inn", "price": "1400", "balance": "1000"}' https://localhost:6000/reservations &
+curl -k --silent -w '\n' -X POST -H "Content-Type: application/json" -d '{"reservationID": "200", "clientID": "1", "date": "01012022", "hotelName": "Holiday Inn", "price": "1400", "balance": "1000"}' https://localhost:6000/reservations &
 sleep 1
 echo "=========================================================="
 echo "Testing [35mGET[0m Reservations (all reservations):"

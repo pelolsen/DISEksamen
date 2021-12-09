@@ -98,7 +98,7 @@ echo "\n${GREEN}POST${NC} Reservation 1:"
 curl -k -X POST -H "Content-Type: application/json" -d '{"reservationID": "100", "clientID": "1", "date": "24122021", "hotelName": "Marriot", "price": "2300", "balance": "2"}' https://localhost:6000/reservations &
 sleep 1
 echo "\n${GREEN}POST${NC} Reservation 2:"
-curl -k -X POST -H "Content-Type: application/json" -d '{"reservationID": "200", "clientID": "2", "date": "01012022", "hotelName": "Holiday Inn", "price": "1400", "balance": "1000"}' https://localhost:6000/reservations &
+curl -k -X POST -H "Content-Type: application/json" -d '{"reservationID": "200", "clientID": "1", "date": "01012022", "hotelName": "Holiday Inn", "price": "1400", "balance": "1000"}' https://localhost:6000/reservations &
 sleep 1
 echo "\n=========================================================="
 echo "\nTesting ${PURPLE}GET${NC} Reservations (all reservations):"

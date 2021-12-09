@@ -1,4 +1,5 @@
 [GitHub](https://github.com/pelolsen/diseksamen) Repo for this project.
+[comment]: <> (If you wish this file to be more readable, please access the GitHub link above, so the file can render)
 # Travel Reservation Application
 This Travel Reservation Application is made as an Exam for Copenhagen Buisiness School - Winter 2021
 
@@ -156,5 +157,9 @@ curl -k -X DELETE https://localhost:6000/clients/2
 ## Author
 Patrick Esben Lerdrup Olsen - Copenhagen, Denmark.
 [GitHub](https://github.com/pelolsen)
+
+## Sources / Inspiration
+- Load-Balancer: GitHub user Hasanmansur - [GitRepo](https://github.com/hasanmansur/BalanceYourLoad)
+- SSL key generation: [NodeJs-Documentation](https://nodejs.org/en/knowledge/HTTP/servers/how-to-create-a-HTTPS-server/)
 
 
