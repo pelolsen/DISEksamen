@@ -1,5 +1,5 @@
 [GitHub](https://github.com/pelolsen/diseksamen) Repo for this project.
-[comment](If you wish this file to be more readable, please access the GitHub link above, so the file can render)
+<!---If you wish this file to be more readable, please access the GitHub link above, so the file can render--->
 # Travel Reservation Application
 This Travel Reservation Application is made as an Exam for Copenhagen Buisiness School - Winter 2021
 
